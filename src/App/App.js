@@ -1,7 +1,7 @@
 import React from 'react';
-import Add from './Add';
-import TodoList from './TodoList';
-import Footer from './Footer';
+import Add from '../Add/Add';
+import TodoList from '../TodoList/TodoList';
+import Footer from '../Footer/Footer';
 import './App.css';
 
 /* TODO
