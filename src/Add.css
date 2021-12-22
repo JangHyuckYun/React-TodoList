@@ -1,0 +1,6 @@
+.search-container {
+    margin-bottom: 50px;
+}
+.search-container input[name="search"] {
+    width: 100%;
+}

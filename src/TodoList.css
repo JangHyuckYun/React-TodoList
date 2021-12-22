@@ -1,0 +1,48 @@
+.todo-list-container {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgba(0,0,0, .5);
+}
+
+.todo-list-container .todo {
+    min-height: 40px;
+    position: relative;
+    padding:5px 0;
+    border-bottom: 1px solid rgba(0,0,0, .2);
+}
+
+.todo-list-container .todo .check-box {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-list-container .todo .check-box input {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+
+.todo-list-container .todo .text-box {
+    position: relative;
+    width: 90%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-all;
+    padding: 0 5px;
+}
+
+.todo-list-container .todo .text-box textarea {
+    flex: 1;
+    outline: none;
+}
+
+.todo-list-container .todo.complete {
+
+}
+.todo-list-container .todo.complete .text-box p{
+    text-decoration: line-through;
+}
