@@ -1,6 +1,6 @@
 # React Todo List
 
-site url : `https://by09019.github.io/React-TodoList`
+site url : `https://janghyuckyun.github.io/React-TodoList/`
 
 React js 활용해 만든 두번째 프로젝트로 공부 목적으로 만들었음.
 추후 Style Component 공부하여 수정 예정.
