@@ -1,4 +1,4 @@
-import {createContext, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 import { useBeforeunload } from "react-beforeunload";
 
 const defaultData = {
@@ -32,12 +32,18 @@ const InfoStore = (props) => {
         setTodoList([...todoList]);
     };
 
-    const changeStateTodo = (itemIdx, type = "modify") => {
-        let target = todoList[itemIdx];
-        if(type === "modify") {
-            target.isModifying = !target.isModifying;
-        } else if(type === "select") {
-            target.isSelected = !target.isSelected;
+    const changeStateTodo = (itemId, type = "modify") => {
+        if(Array.isArray(itemId)) {
+            itemId.forEach(idx => {
+                todoList[getTodoIdx(idx)].isModifying = !todoList[getTodoIdx(idx)].isModifying;
+            });
+        } else {
+            let target = todoList[getTodoIdx(itemId)];
+            if(type === "modify") {
+                target.isModifying = !target.isModifying;
+            } else if(type === "select") {
+                target.isSelected = !target.isSelected;
+            }
         }
 
         setTodoList([...todoList]);
@@ -59,6 +65,18 @@ const InfoStore = (props) => {
     useBeforeunload((event) => {
         localStorage.setItem("todoList", JSON.stringify(todoList));
     });
+
+    useEffect(() => {
+        document.querySelector("#root").addEventListener("click", ({target}) => {
+            const modifyingTodos = todoList.filter(item => item.isModifying);
+
+            if(target.className !== "modifying" && modifyingTodos.length !== 0) {
+                console.log("asfasf");
+                changeStateTodo(modifyingTodos.map(item => item.id));
+            }
+        })
+    }, []);
+
 
     return (
         <InfoContext.Provider value={{todoList, addTodo, modifyTodo, deleteTodo, validation, changeStateTodo}}>
