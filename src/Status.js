@@ -10,7 +10,7 @@ const Status = () => {
         const allLen = list.length;
         const completeLen = list.filter(item => item.isSelected).length;
 
-        return Math.ceil(completeLen / allLen * 100);
+        return Math.ceil(completeLen / allLen * 100) || 0;
     }
 
     const avg = useMemo(() => getAverage(todoList), [todoList]);
