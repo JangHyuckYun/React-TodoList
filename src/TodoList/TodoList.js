@@ -1,51 +1,49 @@
-import React from "react";
-import "./TodoList.css";
+import React, {useContext} from "react";
+import {InfoContext} from "../contexts/info";
+import TodoListStyle from "../styled/TodoList-Style";
+import {FaCheck} from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 
-class Todo extends React.Component {
-    render() {
-        const {idx, complete, text, modify, display, onChange, modifyTodo, deleteTodo} = this.props;
+const TodoList = () => {
+    const {todoList, changeStateTodo, modifyTodo, deleteTodo} = useContext(InfoContext);
 
-        return (
-            <div className={"todo " + (display ? "flex " : "none ") + (complete ? "complete " : "")} key={idx}
-                 data-idx={idx}>
-                <div className="check-box">
-                    <input type="checkbox" checked={complete} onChange={onChange}/>
-                </div>
-                <div className="text-box" onDoubleClick={modifyTodo}>
-                    {modify ? (
-                            <textarea onKeyPress={modifyTodo}>
-                                {text}
-                            </textarea>)
-                        : (<p>{text}</p>)}
+    const changeContent = ({key, target: {dataset, value}}) => {
+        if (key === "Enter") {
+            let item = todoList[dataset.idx];
+            item.content = value;
+            item.isModifying = !item.isModifying;
 
-                </div>
-                <div className="corner flex align-center justify-center">
-                    <button onClick={deleteTodo}>Delete</button>
-                </div>
-            </div>
-        );
-    }
-}
+            modifyTodo(item);
+        }
+    };
 
-class TodoList extends React.Component {
-    render() {
-        const {onChange, deleteTodo, modifyTodo} = this.props;
+    const changeSelected = (itemIdx) => {
+        let item = todoList[itemIdx];
+        item.isSelected = !item.isSelected;
 
-        return (
-            <div className="todo-list-container container">
-                {this.props.todoList.map((todo, idx) =>
-                    <Todo
-                        idx={idx}
-                        text={todo.text}
-                        display={todo.display}
-                        complete={todo.complete}
-                        modify={todo.modify}
-                        onChange={onChange}
-                        modifyTodo={modifyTodo}
-                        deleteTodo={deleteTodo}/>)}
-            </div>
-        );
-    }
-}
+        modifyTodo(item);
+    };
+
+    console.log("render...");
+    return (
+        <TodoListStyle>
+            {todoList.map((item, idx) =>
+                <div key={item.id} className="todo">
+                    <div className="input_box">
+                        <input id={"item_"+item.id} type="checkbox" onChange={() => changeSelected(idx)} checked={item.isSelected}/>
+                        <label htmlFor={"item_"+item.id}><FaCheck /></label>
+                    </div>
+                    <div className="text_box" onDoubleClick={(e) => changeStateTodo(idx)}>
+                        {item.isModifying ?
+                            <textarea defaultValue={item.content} data-idx={idx} onKeyPress={changeContent}/> :
+                            <p className={item.isSelected ? "selected" : ""}>{item.content}</p>}
+                    </div>
+                    <div className="button_box">
+                        <button onClick={(e) => deleteTodo(idx)}><ImCross /></button>
+                    </div>
+                </div>)}
+        </TodoListStyle>
+    );
+};
 
 export default TodoList;
