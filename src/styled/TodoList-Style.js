@@ -17,6 +17,8 @@ export default styled.div`
   .todo {
     margin: 15px 0;
     padding: 5px 0;
+    min-height:41px;
+    height: auto;
 
     display: flex;
     align-items: center;
@@ -24,13 +26,18 @@ export default styled.div`
 
     .text_box {
       flex: 1;
-      text-align: center;
+      min-height:100%;
+      text-align: left;
       padding: 0 10px;
 
-      textarea {
+      input {
         width: 100%;
+        height: 100%;
         border-radius: 25px;
         border: 1px solid black;
+        padding:5px 0 5px 10px;
+        
+        outline: none;
       }
 
       p.selected {

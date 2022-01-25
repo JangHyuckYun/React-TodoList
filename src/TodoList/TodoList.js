@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {InfoContext} from "../contexts/info";
 import TodoListStyle from "../styled/TodoList-Style";
 import {FaCheck} from "react-icons/fa";
-import { ImCross } from "react-icons/im";
+import {ImCross} from "react-icons/im";
 
 const TodoList = () => {
     const {todoList, changeStateTodo, modifyTodo, deleteTodo} = useContext(InfoContext);
@@ -30,16 +30,17 @@ const TodoList = () => {
             {todoList.map((item, idx) =>
                 <div key={item.id} className="todo">
                     <div className="input_box">
-                        <input id={"item_"+item.id} type="checkbox" onChange={() => changeSelected(idx)} checked={item.isSelected}/>
-                        <label htmlFor={"item_"+item.id}><FaCheck /></label>
+                        <input id={"item_" + item.id} type="checkbox" onChange={() => changeSelected(idx)}
+                               checked={item.isSelected}/>
+                        <label htmlFor={"item_" + item.id}><FaCheck/></label>
                     </div>
-                    <div className="text_box" onDoubleClick={(e) => changeStateTodo(idx)}>
+                    <div className="text_box" onDoubleClick={(e) => changeStateTodo(item.id)}>
                         {item.isModifying ?
-                            <textarea defaultValue={item.content} data-idx={idx} onKeyPress={changeContent}/> :
+                            <input type="text" className="modifying" defaultValue={item.content} data-idx={idx} onKeyPress={changeContent}/> :
                             <p className={item.isSelected ? "selected" : ""}>{item.content}</p>}
                     </div>
                     <div className="button_box">
-                        <button onClick={(e) => deleteTodo(idx)}><ImCross /></button>
+                        <button onClick={(e) => deleteTodo(idx)}><ImCross/></button>
                     </div>
                 </div>)}
         </TodoListStyle>
