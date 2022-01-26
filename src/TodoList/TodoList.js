@@ -5,15 +5,18 @@ import {FaCheck} from "react-icons/fa";
 import {ImCross} from "react-icons/im";
 
 const TodoList = () => {
-    const {todoList, viewType, changeStateTodo, modifyTodo, deleteTodo, getTodoIdx} = useContext(InfoContext);
+    const {todoList, viewType, changeStateTodo, modifyTodo, deleteTodo, getTodoIdx, validation} = useContext(InfoContext);
 
     const changeContent = ({key, target: {dataset, value}}) => {
         if (key === "Enter") {
             let item = todoList[dataset.idx];
             item.content = value;
-            item.isModifying = !item.isModifying;
 
-            modifyTodo(item);
+            if(validation(item)) {
+                item.isModifying = !item.isModifying;
+
+                modifyTodo(item);
+            }
         }
     };
 

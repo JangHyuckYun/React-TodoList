@@ -78,9 +78,8 @@ const InfoStore = (props) => {
     useEffect(() => {
         document.querySelector("#root").addEventListener("click", ({target}) => {
             const modifyingTodos = todoList.filter(item => item.isModifying);
-
+            console.log("click", target);
             if(target.className !== "modifying" && modifyingTodos.length !== 0) {
-                console.log("asfasf");
                 changeStateTodo(modifyingTodos.map(item => item.id));
             }
         })
