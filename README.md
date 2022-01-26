@@ -1,6 +1,7 @@
 # React Todo List
 
-site url : https://janghyuckyun.github.io/React-TodoList/
+[TodoList](https://janghyuckyun.github.io/React-TodoList/){:target="_blank"}
+
 
 It is the second project made using React and was made for study.
 
