@@ -13,14 +13,15 @@ const App = () => {
             <AppStyle>
                 <div className="top">
                     <div className="title">
-                        <p className="leftText">Your <br/> Things</p>
+                        <div className="left_box">
+                            <p className="leftText">TODO LIST</p>
+                        </div>
                         <Status />
                     </div>
                 </div>
                 <div className="bottom">
                     <AddInput className="input_container" />
                     <TodoList />
-                    <Footer />
                 </div>
             </AppStyle>
         </InfoStore>

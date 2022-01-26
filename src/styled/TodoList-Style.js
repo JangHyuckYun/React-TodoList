@@ -3,9 +3,10 @@ import styled from "styled-components";
 export default styled.div`
   width: 100%;
   height: 100%;
-  max-height: 500px;
+  max-height: 700px;
   overflow-y: auto;
   position: relative;
+  padding: 0 39px;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -17,7 +18,7 @@ export default styled.div`
   .todo {
     margin: 15px 0;
     padding: 5px 0;
-    min-height:41px;
+    min-height: 41px;
     height: auto;
 
     display: flex;
@@ -26,7 +27,7 @@ export default styled.div`
 
     .text_box {
       flex: 1;
-      min-height:100%;
+      min-height: 100%;
       text-align: left;
       padding: 0 10px;
 
@@ -35,8 +36,8 @@ export default styled.div`
         height: 100%;
         border-radius: 25px;
         border: 1px solid black;
-        padding:5px 0 5px 10px;
-        
+        padding: 5px 0 5px 10px;
+
         outline: none;
       }
 
@@ -48,6 +49,8 @@ export default styled.div`
 
       p {
         font-weight: bold;
+        white-space: break-spaces;
+        word-break: break-all;
       }
     }
 
@@ -55,11 +58,16 @@ export default styled.div`
       input {
         display: none;
 
+        & + label {
+          transition: .3s;
+        }
+
         &:checked + label {
           background: #B0E6CF;
 
           path {
             color: #FEFBFA;
+            transition: .3s;
           }
         }
       }
@@ -85,8 +93,12 @@ export default styled.div`
         width: auto;
         height: auto;
 
+        path {
+          transition: .3s;
+        }
+
         &:hover path {
-          color: red;
+          color: #ff5959;
         }
       }
     }

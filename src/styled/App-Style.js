@@ -21,12 +21,19 @@ export default styled.div`
         display:flex;
         border-radius: 9px;
         overflow: hidden;
-        align-items:center;
+        align-items:flex-start;
         justify-content: space-between;
         margin-bottom: 10px;
         z-index: 5;
-        padding:0 10px;
-
+        padding:0 60px;
+        
+        .left_box {
+          height: 37%;
+          display: flex;
+          align-items: flex-end;
+          padding-bottom: 10px;
+        }
+        
         p.leftText {
           color:#fff;
           font-size:32px;
@@ -74,7 +81,7 @@ export default styled.div`
     height: 100%;
     position: relative;
     left: 50%;
-    transform: translate(-50%, -82px);
+    transform: translate(-50%, -170px);
     //background: #fff7ed;
     background: #fff;
     border-radius: 60px 60px / 61px 61px;
