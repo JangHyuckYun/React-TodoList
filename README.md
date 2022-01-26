@@ -1,7 +1,6 @@
 # React Todo List
 
-[TodoList](https://janghyuckyun.github.io/React-TodoList/){:target="_blank"}
-
+<a href="https://janghyuckyun.github.io/React-TodoList/" target="_blank">go to TodoList</a>
 
 It is the second project made using React and was made for study.
 
