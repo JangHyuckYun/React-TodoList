@@ -5,6 +5,7 @@ import Footer from './Footer/Footer';
 import AppStyle from './styled/App-Style';
 import InfoStore, {InfoContext} from "./contexts/info";
 import Status from "./Status";
+import ChooseViewType from "./TodoList/ChooseViewType";
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
                 </div>
                 <div className="bottom">
                     <AddInput className="input_container" />
+                    <ChooseViewType />
                     <TodoList />
                 </div>
             </AppStyle>
