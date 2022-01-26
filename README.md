@@ -11,7 +11,6 @@ It is the second project made using React and was made for study.
 - You can modify the content when you double-click Todo.
 - You can delete Todo by clicking the ❌ button.
 
-
 ### Modification history
 
 > #### 2021-12-26
@@ -29,6 +28,7 @@ It is the second project made using React and was made for study.
 > - added the completion status.
 > - added a percent gauge according to the number of letters.
 > - changed Add Input and TodoList design.
+> - Modified to display the list by TodoList.
 
 ### Sources
  - design: https://github.com/josealvaradoo/flutter-todolist
