@@ -1,19 +1,46 @@
 # React Todo List
 
-site url : `https://janghyuckyun.github.io/React-TodoList/`
+site url : https://janghyuckyun.github.io/React-TodoList/
 
-React js 활용해 만든 두번째 프로젝트로 공부 목적으로 만들었음.
-추후 Style Component 공부하여 수정 예정.
+It is the second project made using React and was made for study.
 
-### 기능
- - 상단의 Input 에서 Enter 클릭 시 할 일 목록에 Item이 추가된다.
- - Item
-   - 체크박스 클릭 시 완료 Item으로 바뀐다.
-   - 할 일 내용 부분 더블클릭 시 수정할 수 있다.
-   - delete 버튼 클릭시 해당 Item은 삭제된다.
- - Footer
-   - 좌측에 전체 Item의 개수를 확인할 수 있다.
-   - All 버튼 클릭시 전체 Item을 확인할 수있다.
-   - Active 버튼 클릭시 Complete 되지 않은 Item을 확인할 수 있다.
-   - Complete 버튼 클릭시 Complete된 Item을 확인할 수 있다.
-   - Clear Completed 버튼 클릭시 Complete된 Item들을 지울수 있다.
+### Functions
+ - You can check the status of Todo completion at the top.
+ - Todo is added when clicking the ➕ button or pressing Enter in Add Input.
+ - You can complete what you have to do by pressing the Todo check button.
+ - You can modify the content when you double-click Todo.
+ - You can delete Todo by clicking the ❌ button.
+
+
+### Modification history
+
+> #### 2021-12-26
+>
+> - Develop a function related to to to the todo list by utilizing Class Component.
+> 
+> #### 2022-01-25
+>
+> - Change Class Component to Hook Component.
+> - Design change.
+> - Add modify Todo, delete Todo, add Todo functions.
+>
+> #### 2022-01-26
+>
+> - added the completion status.
+> - added a percent gauge according to the number of letters.
+> - changed Add Input and TodoList design.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
