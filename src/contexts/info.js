@@ -3,6 +3,7 @@ import { useBeforeunload } from "react-beforeunload";
 
 const defaultData = {
     todoList: [],
+    textMaxLength:0,
 
     addTodo: () => {},
     modifyTodo: () => {},
@@ -16,8 +17,9 @@ export const InfoContext = createContext(defaultData);
 
 
 const InfoStore = (props) => {
+    const textMaxLength = 30;
     const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("todoList")) || []);
-    console.log(todoList);
+
     const getTodoIdx = (itemId) => {
         return todoList.findIndex(findItem => findItem.id === itemId );
     };
@@ -57,9 +59,9 @@ const InfoStore = (props) => {
     };
 
     const validation = (item) => {
-        const regex = /^[a-zA-Z0-9ㄱ-ㅎ가-힣!?"']+$/g;
+        const regex = /^[a-zA-Z0-9ㄱ-ㅎ가-힣!?"'\s]+$/g;
 
-        return regex.test(item.content);
+        return regex.test(item.content.trim());
     };
 
     useBeforeunload((event) => {
@@ -79,7 +81,7 @@ const InfoStore = (props) => {
 
 
     return (
-        <InfoContext.Provider value={{todoList, addTodo, modifyTodo, deleteTodo, validation, changeStateTodo}}>
+        <InfoContext.Provider value={{textMaxLength, todoList, addTodo, modifyTodo, deleteTodo, validation, changeStateTodo}}>
             {props.children}
         </InfoContext.Provider>
     );
