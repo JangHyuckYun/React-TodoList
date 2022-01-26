@@ -17,11 +17,6 @@ const Status = () => {
 
     return (
         <StatusStyle avg={avg}>
-            <div className="text_container">
-                <p>asd</p>
-                <div className={"line"} />
-                <p>sd</p>
-            </div>
             <div className="chart_container">
                 <PieChart
                     data={[{
@@ -34,15 +29,10 @@ const Status = () => {
                     background="rgba(255,255,255,.85)"
                     startAngle={-90}
                     lengthAngle={360}
-                    label={({dataEntry}) => dataEntry.value + "%"}
-                    labelStyle={{
-                        fontSize: "26px",
-                        fill: "rgba(255,255,255,.9)",
-                    }}
-                    labelPosition={0}
                     rounded
                     animate
                 />
+                <p><b>{avg}%</b> done</p>
             </div>
         </StatusStyle>
     );
