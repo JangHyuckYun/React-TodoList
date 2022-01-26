@@ -54,7 +54,7 @@ const AddInput = (props) => {
         if(value.length >= textMaxLength) {
             input.current.value = value.slice(0, textMaxLength);
         }
-    }
+    };
 
     return (
         <AddInputStyle className={className} avg={avg} textPercent={textPercent}>
