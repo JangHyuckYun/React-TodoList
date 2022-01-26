@@ -4,21 +4,23 @@ import { useBeforeunload } from "react-beforeunload";
 const defaultData = {
     todoList: [],
     textMaxLength:0,
+    viewType: "",
 
     addTodo: () => {},
     modifyTodo: () => {},
     deleteTodo: () => {},
     validation: () => {},
     changeStateTodo: () => {},
+    modifyViewType: () => {},
+    getTodoIdx:() => {},
 };
 
 export const InfoContext = createContext(defaultData);
 
-
-
 const InfoStore = (props) => {
     const textMaxLength = 30;
     const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("todoList")) || []);
+    const [viewType, setViewType] = useState(JSON.parse(localStorage.getItem("viewType")) || "all");
 
     const getTodoIdx = (itemId) => {
         return todoList.findIndex(findItem => findItem.id === itemId );
@@ -52,8 +54,8 @@ const InfoStore = (props) => {
     };
 
 
-    const deleteTodo = (itemIdx) => {
-        todoList.splice(itemIdx, 1);
+    const deleteTodo = (itemId) => {
+        todoList.splice(getTodoIdx(itemId), 1);
 
         setTodoList([...todoList]);
     };
@@ -64,8 +66,13 @@ const InfoStore = (props) => {
         return regex.test(item.content.trim());
     };
 
+    const modifyViewType = (type) => {
+        setViewType(type);
+    };
+
     useBeforeunload((event) => {
         localStorage.setItem("todoList", JSON.stringify(todoList));
+        localStorage.setItem("viewType", JSON.stringify(viewType));
     });
 
     useEffect(() => {
@@ -81,7 +88,7 @@ const InfoStore = (props) => {
 
 
     return (
-        <InfoContext.Provider value={{textMaxLength, todoList, addTodo, modifyTodo, deleteTodo, validation, changeStateTodo}}>
+        <InfoContext.Provider value={{textMaxLength, todoList, viewType, addTodo, modifyTodo, deleteTodo, validation, changeStateTodo, modifyViewType, getTodoIdx}}>
             {props.children}
         </InfoContext.Provider>
     );
